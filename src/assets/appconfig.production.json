@@ -1,0 +1,22 @@
+{
+  "remoteServiceBaseUrl": "https://api-demo.cartesianui.com/v1",
+  "appBaseUrl": "https://demo.cartesianui.com/",
+  "localeMappings": [
+    {
+      "from": "pt-BR",
+      "to": "pt"
+    },
+    {
+      "from": "zh-CN",
+      "to": "zh"
+    },
+    {
+      "from": "he-IL",
+      "to": "he"
+    }
+  ],
+  "tenancy": {
+    "overwriteHeaderAttribute": true,
+    "host": "demo.cartesianui.com"
+  }
+}

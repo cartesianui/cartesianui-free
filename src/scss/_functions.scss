@@ -1,0 +1,54 @@
+// scss-docs-start color-functions
+// Tint a color: mix a color with white
+@function tint-color($color, $weight) {
+  @return mix(white, $color, $weight);
+}
+
+// Shade a color: mix a color with black
+@function shade-color($color, $weight) {
+  @return mix(black, $color, $weight);
+}
+
+// Shade the color if the weight is positive, else tint it
+@function shift-color($color, $weight) {
+  @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
+}
+// scss-docs-end color-functions
+
+// scss-docs-start button-color-functions
+@function btn-color($color, $shade, $tint) {
+  @return if(color-contrast($color) == $color-contrast-light, shade-color($color, $shade), tint-color($color, $tint));
+}
+
+@function btn-color-map($background, $border-color) {
+  @return (
+    'bg': $background,
+    'border-color': $border-color,
+    'color': color-contrast($background),
+    'hover-bg': btn-color($background, $btn-hover-bg-shade-amount, $btn-hover-bg-tint-amount),
+    'hover-border-color': btn-color($border-color, $btn-hover-border-shade-amount, $btn-hover-border-tint-amount),
+    'hover-color': color-contrast(btn-color($background, $btn-hover-bg-shade-amount, $btn-hover-bg-tint-amount)),
+    'active-bg': btn-color($background, $btn-active-bg-shade-amount, $btn-active-bg-tint-amount),
+    'active-border-color': btn-color($border-color, $btn-active-border-shade-amount, $btn-active-border-tint-amount),
+    'active-color': color-contrast(btn-color($border-color, $btn-active-border-shade-amount, $btn-active-border-tint-amount)),
+    'disabled-bg': $background,
+    'disabled-border-color': $border-color,
+    'disabled-color': color-contrast($background),
+    'shadow': 0 2px 6px 0 rgba(mix($background, $border-color, 15%), 0.5)
+  );
+}
+
+@function btn-outline-color-map($background) {
+  @return (
+    'color': $background,
+    'hover-bg': btn-color($background, $btn-hover-bg-shade-amount, $btn-hover-bg-tint-amount),
+    'hover-border-color': btn-color($background, $btn-hover-border-shade-amount, $btn-hover-border-tint-amount),
+    'hover-color': color-contrast(btn-color($background, $btn-hover-bg-shade-amount, $btn-hover-bg-tint-amount)),
+    'active-bg': btn-color($background, $btn-active-bg-shade-amount, $btn-active-bg-tint-amount),
+    'active-border-color': btn-color($background, $btn-active-border-shade-amount, $btn-active-border-tint-amount),
+    'active-color': color-contrast(btn-color($background, $btn-active-border-shade-amount, $btn-active-border-tint-amount)),
+    'disabled-color': $background,
+    'shadow': rgba(mix($background, $background, 15%), 0.5)
+  );
+}
+// scss-docs-end button-color-functions

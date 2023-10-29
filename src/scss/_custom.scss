@@ -1,0 +1,36 @@
+// Here you can add other styles
+@import '@swimlane/ngx-datatable/index.scss';
+@import '@swimlane/ngx-datatable/themes/material.scss';
+@import '@swimlane/ngx-datatable/themes/bootstrap.scss';
+// @import '@swimlane/ngx-datatable/assets/icons.css';
+
+@import 'ngx-bootstrap/datepicker/bs-datepicker.scss';
+
+@import '_datatable.scss';
+@import '_cards.scss';
+@import '_forms.scss';
+
+.offcanvas.offcanvas-end {
+  overflow-y: scroll;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.btn-primary,
+.btn-success,
+.btn-danger,
+.btn-default,
+.btn-info,
+.btn-dark {
+  color: $white;
+}
+
+.invalid-feedback {
+  display: block;
+}

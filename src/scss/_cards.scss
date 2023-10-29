@@ -1,0 +1,14 @@
+.card {
+  border: 1px solid #f5f5f5;
+  border-radius: 0;
+
+  .card-header {
+    background: var(--cui-white, #fff);
+    border: none;
+  }
+
+  .card-body {
+    background: var(--cui-white, #fff);
+  }
+
+}

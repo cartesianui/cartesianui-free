@@ -1,0 +1,15 @@
+// Place for temp fixes
+
+// temp fix for scrollbar styling (wip)
+@import 'scrollbar';
+
+// temp fix .chartjs-tooltip-body-item padding
+@import 'charts';
+
+.text-right {
+  text-align: right;
+}
+
+.input-group-text {
+  padding: 0.69rem 0.75rem;
+}

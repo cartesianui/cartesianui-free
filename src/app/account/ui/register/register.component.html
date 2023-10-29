@@ -1,0 +1,110 @@
+﻿<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="assets/img/login.svg" alt="Image" class="img-fluid" />
+      </div>
+      <div class="col-md-6 contents">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="mb-4">
+              <h3>New Account</h3>
+              <p class="mb-4">Register with us and start exploring awesome features.</p>
+            </div>
+            <form novalidate autocomplete="off" [formGroup]="formGroup" (ngSubmit)="save()">
+              <with-validation>
+                <div class="form-group first">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <span class="fa fa-envelope"></span>
+                      </div>
+                    </div>
+                    <input type="email" class="form-control" formControlName="email" placeholder="EmailAddress" required maxlength="256" />
+                  </div>
+                </div>
+              </with-validation>
+
+              <with-validation>
+                <div class="form-group mt2">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <span class="fa fa-user"></span>
+                      </div>
+                    </div>
+                    <input formControlName="name" type="text" class="form-control" placeholder="Name" />
+                  </div>
+                </div>
+              </with-validation>
+
+              <with-validation>
+                <div class="form-group mt2">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <span class="fa fa-mars-double"></span>
+                      </div>
+                    </div>
+                    <select formControlName="gender" type="text" class="form-select" required maxlength="64">
+                      <option value="unspecified" selected="selected">Gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+                </div>
+              </with-validation>
+
+              <with-validation>
+                <div class="form-group mt2">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <span class="fa fa-calendar"></span>
+                      </div>
+                    </div>
+                    <input formControlName="dob" type="date" class="form-control" name="birth" placeholder="Birth Date" />
+                  </div>
+                </div>
+              </with-validation>
+
+              <with-validation>
+                <div class="form-group mt2">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <span class="fa fa-lock"></span>
+                      </div>
+                    </div>
+                    <input formControlName="password" type="password" class="form-control" placeholder="Password" />
+                  </div>
+                </div>
+              </with-validation>
+
+              <with-validation>
+                <div class="form-group last mt2">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <span class="fa fa-lock"></span>
+                      </div>
+                    </div>
+                    <input formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password"  equalTo="password"/>
+                  </div>
+                </div>
+              </with-validation>
+
+              <button type="submit" class="btn btn-block btn-primary mt-5" [disabled]="!formGroup.valid">Register Now</button>
+
+              <span class="d-block text-left my-4 text-muted">
+                &mdash; Already member
+                <a [routerLink]="['../login']"> Sigin </a>
+                &mdash;</span
+              >
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
