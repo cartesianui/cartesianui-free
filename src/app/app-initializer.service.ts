@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PlatformLocation, registerLocaleData } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Settings as DateTimeSettings } from 'luxon';
 import * as _ from 'lodash';
 import { environment } from '../environments/environment';
@@ -18,7 +19,8 @@ export class AppInitializerService {
     private uiService: UiService,
     private tokenService: TokenService,
     private accountSandbox: AccountSandbox,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private router: Router
   ) {}
 
   init(): () => Promise<AuthUser | boolean> {
@@ -60,6 +62,7 @@ export class AppInitializerService {
                   }
                 } else {
                   resolve(false);
+                  this.router.navigate(['/account/login'])
                 }
               },
               (err) => {
