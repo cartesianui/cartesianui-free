@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Proxy Settings
 
-Running locally require updating proxy.conf/json
+Running locally require updating `proxy.conf/json`
 
 ## Code scaffolding
 
