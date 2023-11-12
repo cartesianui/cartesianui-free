@@ -20,7 +20,7 @@
     }
   ],
   "tenancy": {
-    "overwriteHeaderAttribute": true,
-    "host": "larabeans.ts"
+    "overwriteHeaderAttribute": false,
+    "host": ""
   }
 }
