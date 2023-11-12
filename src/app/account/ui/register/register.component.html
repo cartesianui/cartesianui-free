@@ -20,7 +20,7 @@
                         <span class="fa fa-envelope"></span>
                       </div>
                     </div>
-                    <input type="email" class="form-control" formControlName="email" placeholder="EmailAddress" required maxlength="256" />
+                    <input validate type="email" class="form-control" formControlName="email" placeholder="EmailAddress" required maxlength="256" />
                   </div>
                 </div>
               </with-validation>
@@ -33,7 +33,7 @@
                         <span class="fa fa-user"></span>
                       </div>
                     </div>
-                    <input formControlName="name" type="text" class="form-control" placeholder="Name" />
+                    <input validate formControlName="name" type="text" class="form-control" placeholder="Name" />
                   </div>
                 </div>
               </with-validation>
@@ -46,7 +46,7 @@
                         <span class="fa fa-mars-double"></span>
                       </div>
                     </div>
-                    <select formControlName="gender" type="text" class="form-select" required maxlength="64">
+                    <select validate formControlName="gender" type="text" class="form-select" required maxlength="64">
                       <option value="unspecified" selected="selected">Gender</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
@@ -63,7 +63,7 @@
                         <span class="fa fa-calendar"></span>
                       </div>
                     </div>
-                    <input formControlName="dob" type="date" class="form-control" name="birth" placeholder="Birth Date" />
+                    <input validate formControlName="dob" type="date" class="form-control" name="birth" placeholder="Birth Date" />
                   </div>
                 </div>
               </with-validation>
@@ -76,7 +76,7 @@
                         <span class="fa fa-lock"></span>
                       </div>
                     </div>
-                    <input formControlName="password" type="password" class="form-control" placeholder="Password" />
+                    <input validate formControlName="password" type="password" class="form-control" placeholder="Password" />
                   </div>
                 </div>
               </with-validation>
@@ -89,7 +89,7 @@
                         <span class="fa fa-lock"></span>
                       </div>
                     </div>
-                    <input formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password"  equalTo="password"/>
+                    <input validate formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password"  equalTo="password"/>
                   </div>
                 </div>
               </with-validation>

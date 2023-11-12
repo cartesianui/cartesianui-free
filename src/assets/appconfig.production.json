@@ -1,5 +1,9 @@
 {
   "remoteServiceBaseUrl": "https://api-demo.cartesianui.com/v1",
+  "apiEndpoints": {
+    "login": "/clients/web/login",
+    "authenticatedUser": "/profile"
+  },
   "appBaseUrl": "https://demo.cartesianui.com/",
   "localeMappings": [
     {
@@ -17,6 +21,6 @@
   ],
   "tenancy": {
     "overwriteHeaderAttribute": true,
-    "host": "demo.cartesianui.com"
+    "host": "cartesianui.ts"
   }
 }

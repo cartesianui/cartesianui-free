@@ -1,5 +1,9 @@
 {
   "remoteServiceBaseUrl": "v1",
+  "apiEndpoints": {
+    "login": "/clients/web/login",
+    "authenticatedUser": "/profile"
+  },
   "appBaseUrl": "http://localhost:4200",
   "localeMappings": [
     {
@@ -17,6 +21,6 @@
   ],
   "tenancy": {
     "overwriteHeaderAttribute": true,
-    "host": "cartesianui.ts"
+    "host": "larabeans.ts"
   }
 }

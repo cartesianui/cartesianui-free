@@ -23,7 +23,7 @@ export class RegisterComponent extends FormBaseComponent<AuthUser> implements On
       email: new FormControl('', []),
       name: new FormControl('', []),
       password: new FormControl('', []),
-      cofirmPassword: new FormControl('', []),
+      confirmPassword: new FormControl('', []),
       gender: new FormControl('unspecified', []),
       dob: new FormControl('', [])
     });
