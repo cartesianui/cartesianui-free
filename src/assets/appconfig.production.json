@@ -1,10 +1,10 @@
 {
-  "remoteServiceBaseUrl": "https://your-remote-api-url/v1",
+  "remoteServiceBaseUrl": "https://api-demo.cartesianui.com/v1",
   "apiEndpoints": {
     "login": "/clients/web/login",
     "authenticatedUser": "/profile"
   },
-  "appBaseUrl": "https://your-remote-url/",
+  "appBaseUrl": "https://demo.cartesianui.com/",
   "localeMappings": [
     {
       "from": "pt-BR",

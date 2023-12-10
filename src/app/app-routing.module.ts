@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { RouteGuard } from '@shared/services';
 import { DefaultLayoutComponent } from '@cartesianui/coreui';
 import { navItems } from '@app/nav.data';
-import { UserConfigurationComponent } from '@cartesianui/bo-user';
 
 const routes: Routes = [
   {
