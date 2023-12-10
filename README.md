@@ -1,10 +1,14 @@
 # Cartesian UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Proxy Settings
+
+Running locally may require updating `proxy.conf.json`
 
 ## Code scaffolding
 
@@ -25,12 +29,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## Git Submodules
-If git repo is already setup for library under projects, just run below command to add that as submodule.
-`git submodule add -f git@github.com:cartesianui/lib.git projects/lib`
-
-Clone repo including submodules
-`git clone --recurse-submodules -j8 git@github.com:cartesianui/cartesian.ui`
-
-## TODO:

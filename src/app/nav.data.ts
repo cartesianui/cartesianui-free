@@ -15,17 +15,17 @@ export const navItems: INavData[] = [
   },
   {
     name: 'User',
-    url: '/users',
+    url: '/admin/users',
     icon: 'fa fa-user'
   },
   {
     name: 'Roles',
-    url: '/authorization/roles',
+    url: '/admin/auth/roles',
     icon: 'fa fa-user-shield'
   },
   {
     name: 'Permissions',
-    url: '/authorization/permissions',
+    url: '/admin/auth/permissions',
     icon: 'fa fa-building-lock'
   },
 
@@ -38,7 +38,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Tenants',
-    url: '/tenants',
+    url: '/admin/tenants',
     icon: 'fa fa-passport'
   },
 
@@ -51,37 +51,37 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Book Keeping',
-    url: '/bookeeper',
+    url: '/admin/bookeeper',
     icon: 'fa fa-coins',
     children: [
       {
         name: 'Accounts',
-        url: '/bookeeper/accounts',
+        url: '/admin/bookeeper/accounts',
         icon: 'fas fa-list'
       },
       {
         name: 'Account Types',
-        url: '/bookeeper/types',
+        url: '/admin/bookeeper/types',
         icon: 'fa fa-list-ol'
       },
       {
         name: 'Account Category',
-        url: '/bookeeper/categories',
+        url: '/admin/bookeeper/categories',
         icon: 'fa fa-table-list'
       },
       {
         name: 'Journal Voucher',
-        url: '/bookeeper/journal-vouchers',
+        url: '/admin/bookeeper/journal-vouchers',
         icon: 'fa fa-file-lines'
       },
       {
         name: 'Receipt Voucher',
-        url: '/bookeeper/receipt-vouchers',
+        url: '/admin/bookeeper/receipt-vouchers',
         icon: 'fa fa-receipt'
       },
       {
         name: 'Payment Voucher',
-        url: '/bookeeper/payment-vouchers',
+        url: '/admin/bookeeper/payment-vouchers',
         icon: 'fa fa-file-invoice-dollar'
       }
     ]
@@ -96,27 +96,27 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Locations',
-    url: '/locations',
+    url: '/admin/locations',
     icon: 'fa fa-map-location-dot',
     children: [
       {
         name: 'Countries',
-        url: '/locations/countries',
+        url: '/admin/locations/countries',
         icon: 'fa fa-flag'
       },
       {
         name: 'States',
-        url: '/locations/states',
+        url: '/admin/locations/states',
         icon: 'fa fa-landmark'
       },
       {
         name: 'Cities',
-        url: '/locations/cities',
+        url: '/admin/locations/cities',
         icon: 'fa fa-city'
       },
       {
         name: 'Locations',
-        url: '/locations/locations',
+        url: '/admin/locations/locations',
         icon: 'fa fa-location-dot'
       }
     ]
@@ -131,29 +131,29 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Configuration',
-    url: '/configuration/user',
+    url: '/admin/configuration/user',
     icon: 'fa fa-cogs',
     children: [
       {
         name: 'User',
-        url: '/configuration/user',
+        url: '/admin/configuration/user',
         icon: 'fa fa-user-cog'
       },
       {
         name: 'Host',
-        url: '/configuration/host',
+        url: '/admin/configuration/host',
         icon: 'fa fa-globe'
       },
       {
         name: 'Tenant',
-        url: '/configuration/tenant',
+        url: '/admin/configuration/tenant',
         icon: 'fa fa-cog'
       },
       {
         name: 'Domain',
-        url: '/configuration/domain',
+        url: '/admin/configuration/domain',
         icon: 'fa fa-earth-asia'
       }
     ]
-  },
+  }
 ];

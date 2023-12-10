@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PlatformLocation, registerLocaleData } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { Settings as DateTimeSettings } from 'luxon';
 import * as _ from 'lodash';
 import { environment } from '../environments/environment';
@@ -20,10 +19,9 @@ export class AppInitializerService {
     private tokenService: TokenService,
     private accountSandbox: AccountSandbox,
     private sessionService: SessionService,
-    private router: Router
   ) {}
 
-  init(): () => Promise<AuthUser | boolean> {
+  init(calledAfterSuccessfulLoginAttempt: boolean = false): () => Promise<AuthUser | boolean> {
     return () => {
       this.uiService.setBusy();
       return new Promise<AuthUser | boolean>((resolve, reject) => {
@@ -48,8 +46,14 @@ export class AppInitializerService {
               (user: AuthUser | boolean) => {
                 this.uiService.clearBusy();
                 if (user) {
-                  this.accountSandbox.setAuthenticatedUser(user as AuthUser);
-                  this.accountSandbox.setAuthToken({ accessToken: this.tokenService.getToken() } as AuthToken);
+
+                  // Only set state when function called as app initilizer
+                  // Other case is, called implicitly, after login success
+                  if (!calledAfterSuccessfulLoginAttempt) {
+                    this.accountSandbox.setAuthenticatedUser(user as AuthUser);
+                    this.accountSandbox.setAuthToken({ accessToken: this.tokenService.getToken() } as AuthToken);
+                  }
+
                   if (this.shouldLoadLocale()) {
                     const angularLocale = this.convertCartesianLocaleToAngularLocale(cartesian.localization.currentLanguage.name);
                     import(`node_modules/@angular/common/locales/${angularLocale}.js`).then((module) => {
@@ -62,7 +66,6 @@ export class AppInitializerService {
                   }
                 } else {
                   resolve(false);
-                  this.router.navigate(['/account/login'])
                 }
               },
               (err) => {
@@ -77,10 +80,11 @@ export class AppInitializerService {
   }
 
   private getApplicationConfig(appRootUrl: string, callback: () => void) {
-    this.httpClient.get<any>(`${appRootUrl}assets/${environment.appConfig}`, {}).subscribe((response) => {
-      AppConstants.remoteServiceBaseUrl = response.remoteServiceBaseUrl;
-      AppConstants.localeMappings = response.localeMappings;
-      AppConstants.interceptor.tenancy = response.tenancy;
+    this.httpClient.get<any>(`${appRootUrl}assets/${environment.appConfig}`, {}).subscribe(({ remoteServiceBaseUrl, localeMappings, tenancy, apiEndpoints }) => {
+      AppConstants.remoteServiceBaseUrl = remoteServiceBaseUrl;
+      AppConstants.localeMappings = localeMappings;
+      AppConstants.interceptor.tenancy = tenancy;
+      AppConstants.apiEndpoints = { ...apiEndpoints };
 
       callback();
     });
@@ -107,14 +111,14 @@ export class AppInitializerService {
       .subscribe({
         next: (value) => {
           const result = convertObjectKeysToCamel(value);
+          
           _.merge(cartesian, result);
-          cartesian.clock.provider = this.getCurrentClockProvider(result.clock.provider);
 
           // DateTime Default Settings
           DateTimeSettings.defaultLocale = cartesian.localization.currentLanguage.name;
           DateTimeSettings.defaultZone = 'Etc/UTC';
 
-          if (cartesian.clock.provider.supportsMultipleTimezone) {
+          if (cartesian.timing.timeZoneInfo.iana.timeZoneId) {
             DateTimeSettings.defaultZone = cartesian.timing.timeZoneInfo.iana.timeZoneId;
           }
 
@@ -133,11 +137,6 @@ export class AppInitializerService {
     }
 
     return '/';
-  }
-
-  private getHostName(): string {
-    const port = document.location.port ? ':' + document.location.port : '';
-    return document.location.hostname + port;
   }
 
   private getDocumentOrigin(): string {
@@ -166,17 +165,5 @@ export class AppInitializerService {
     }
 
     return locale;
-  }
-
-  private getCurrentClockProvider(currentProviderName: string): cartesian.timing.IClockProvider {
-    if (currentProviderName === 'unspecifiedClockProvider') {
-      return cartesian.timing.unspecifiedClockProvider;
-    }
-
-    if (currentProviderName === 'utcClockProvider') {
-      return cartesian.timing.utcClockProvider;
-    }
-
-    return cartesian.timing.localClockProvider;
   }
 }

@@ -3,34 +3,32 @@ import { Routes, RouterModule } from '@angular/router';
 import { RouteGuard } from '@shared/services';
 import { DefaultLayoutComponent } from '@cartesianui/coreui';
 import { navItems } from '@app/nav.data';
-import { UserConfigurationComponent } from '@cartesianui/bo-user';
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/admin/dashboard',
+  },
+  {
     path: 'account',
-    loadChildren: () => import('@app/account/account.module').then((m) => m.AccountModule), // Lazy load account module
-    data: { preload: true }
+    loadChildren: () => import('@app/account/account.module').then((m) => m.AccountModule),
   },
   {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
-  },
-  {
-    path: '',
+    path: 'admin',
     component: DefaultLayoutComponent,
-    canActivateChild: [RouteGuard],
     data: {
-      title: 'Home',
+      title: 'Admin',
       navItems: navItems
     },
+    canActivateChild: [RouteGuard],
     children: [
       {
         path: 'dashboard',
         loadChildren: () => import('@app/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
-        path: 'authorization',
+        path: 'auth',
         loadChildren: () => import('@cartesianui/bo-auth').then((m) => m.AuthModule)
       },
       {

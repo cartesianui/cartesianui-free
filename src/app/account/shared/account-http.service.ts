@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpService, POST, GET, Body, DefaultHeaders, Adapter } from '@cartesianui/core';
+import { HttpService, POST, GET, Body, DefaultHeaders, Adapter, AppConstants } from '@cartesianui/core';
 import { LoginForm, UserRegistrationForm } from '../models';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class AccountHttpService extends HttpService {
    *
    * @param LoginForm form AuthUser login form
    */
-  @POST('/clients/web/login')
+  @POST(null, 'login')
   public login(@Body form: LoginForm): Observable<any> {
     return null;
   }

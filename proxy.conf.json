@@ -1,6 +1,6 @@
 {
   "/v1/*": {
-    "target": "http://localhost:8081",
+    "target": "http://api.apiato.ts",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"

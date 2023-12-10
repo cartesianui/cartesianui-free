@@ -44,12 +44,14 @@ export class LoginComponent extends FormBaseComponent<AuthUser> implements OnIni
           this.accountService.processAuthenticateResult(token as AuthToken).then(
             (logged) => {
               if (logged) {
-                this.appInitializer.init()().then(user => {
-                  if(user) {
-                    this.sb.setAuthenticatedUser(user as AuthUser);
-                    this.router.navigate(['/dashboard']);
-                  }
-                });
+                this.appInitializer
+                  .init(true)()
+                  .then((user) => {
+                    if (user) {
+                      this.sb.setAuthenticatedUser(user as AuthUser);
+                      this.router.navigate(['/']);
+                    }
+                  });
               }
             },
             (err) => {}
